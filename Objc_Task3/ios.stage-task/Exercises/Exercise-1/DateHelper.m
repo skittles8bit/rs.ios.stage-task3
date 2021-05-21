@@ -32,11 +32,10 @@
 #pragma mark - Second
 
 - (long)dayFromDate:(NSString *)date {
-    NSArray *parsedArray = [date componentsSeparatedByString:@"-"];
-    NSString *numberString = [parsedArray lastObject];
-    NSString *number = [numberString substringWithRange:NSMakeRange(0, 2)];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     
-    return [number longLongValue];
+    return [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:[dateFormatter dateFromString:date]];
 }
 
 #pragma mark - Third
