@@ -42,7 +42,27 @@
 #pragma mark - Third
 
 - (NSString *)getDayName:(NSDate*) date {
-    return nil;
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    NSDateComponents* comp = [cal components:NSCalendarUnitWeekday fromDate: date];
+    
+    switch ([comp weekday]) {
+        case 1:
+            return @"Вс";
+        case 2:
+            return @"Пн";
+        case 3:
+            return @"Вт";
+        case 4:
+            return @"Ср";
+        case 5:
+            return @"Чт";
+        case 6:
+            return @"Пт";
+        case 7:
+            return @"Сб";
+        default:
+            return nil;
+    }
 }
 
 #pragma mark - Fourth
