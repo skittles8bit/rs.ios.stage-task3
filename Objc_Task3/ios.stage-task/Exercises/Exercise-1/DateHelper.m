@@ -32,7 +32,11 @@
 #pragma mark - Second
 
 - (long)dayFromDate:(NSString *)date {
-    return 0;
+    NSArray *parsedArray = [date componentsSeparatedByString:@"-"];
+    NSString *numberString = [parsedArray lastObject];
+    NSString *number = [numberString substringWithRange:NSMakeRange(0, 2)];
+    
+    return [number longLongValue];
 }
 
 #pragma mark - Third
